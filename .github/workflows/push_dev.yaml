@@ -5,7 +5,7 @@ on:
     branches: 
      - main
     paths: 
-      - dev\docker\Dockerfile
+      - dev/docker/Dockerfile
 
 jobs:
   build-and-push:
