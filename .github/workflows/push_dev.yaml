@@ -33,6 +33,7 @@ jobs:
       uses: docker/build-push-action@v3
       with:
         push: true
+        file: ./dev/docker/Dockerfile
         tags: |
           ghcr.io/robertorojas/k8slab-dev:latest
           ghcr.io/robertorojas/k8slab-dev:${{ env.DATE_TAG }}
