@@ -30,7 +30,7 @@ RUN apt-get install -y python3-pip
 
 RUN ln -s /usr/bin/python3 /usr/bin/python
 
-RUN touch /etc/pip.conf && echo -e "[global]\nbreak-system-packages = true" > /etc/pip.conf
+RUN echo -e "[global]\nbreak-system-packages = true" > /etc/pip.conf
 
 RUN npm install -g nodemon
 
