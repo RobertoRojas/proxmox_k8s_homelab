@@ -16,7 +16,7 @@ RUN apt install -y openssh-server
 
 RUN mkdir -p /run/sshd && chmod 755 /run/sshd
 
-RUN apt-update && apt upgrade
+RUN apt-get update && apt-get upgrade
 
 RUN apt-get install -y curl
 
