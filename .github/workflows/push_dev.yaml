@@ -6,6 +6,10 @@ on:
      - main
     paths: 
       - dev/docker/Dockerfile
+  workflow_dispatch:
+
+permissions:
+  packages: write
 
 jobs:
   build-and-push:
@@ -35,5 +39,5 @@ jobs:
         push: true
         file: ./dev/docker/Dockerfile
         tags: |
-          ghcr.io/robertorojas/k8slab-dev:latest
-          ghcr.io/robertorojas/k8slab-dev:${{ env.DATE_TAG }}
+          ghcr.io/${{ github.repository }}/k8slab-dev:latest
+          ghcr.io/${{ github.repository }}/k8slab-dev:${{ env.DATE_TAG }}
