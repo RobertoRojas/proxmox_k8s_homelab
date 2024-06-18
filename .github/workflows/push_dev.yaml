@@ -34,11 +34,15 @@ jobs:
       id: date
       run: echo "DATE_TAG=$(date +'%Y%m%d')" >> $GITHUB_ENV
 
+    - name: Convert repository name to lowercase
+      id: repository_name
+      run: echo "REPO_NAME=$(echo ${{ github.repository }} | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
+
     - name: Build and push Docker image
       uses: docker/build-push-action@v3
       with:
         push: true
         file: ./dev/docker/Dockerfile
         tags: |
-          ghcr.io/${{ github.repository }}/k8slab-dev:latest
-          ghcr.io/${{ github.repository }}/k8slab-dev:${{ env.DATE_TAG }}
+          ghcr.io/${{ env.REPO_NAME }}/k8slab-dev:latest
+          ghcr.io/${{ env.REPO_NAME }}/k8slab-dev:${{ env.DATE_TAG }}
