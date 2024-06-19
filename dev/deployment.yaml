@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: devlab
+  labels:
+    app: devlab
+spec:
+  containers:
+  - image: ghcr.io/robertorojas/proxmox_k8s_homelab/k8slab-dev:latest
+    imagePullPolicy: IfNotPresent
+    name: devlab
+    ports:
+    - containerPort: 22
+    volumeMounts:
+    - name: authorizedkeys
+      mountPath: /root/.ssh/authorized_keys
+      subPath: authorized_keys
+  restartPolicy: Always
+  volumes:
+  - name: authorizedkeys
+    configMap:
+      name: authorizedkeys
