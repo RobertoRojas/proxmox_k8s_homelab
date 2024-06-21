@@ -6,13 +6,16 @@ spec:
   selector:
     app: dev
   ports:
-    - protocol: TCP
+    - name: ssh
+      protocol: TCP
       port: 22
       targetPort: 22
-    - protocol: TCP
+    - name: http
+      protocol: TCP
       port: 80
       targetPort: 80
-    - protocol: TCP
+    - name: http-alter
+      protocol: TCP
       port: 8080
       targetPort: 8080
   type: LoadBalancer
