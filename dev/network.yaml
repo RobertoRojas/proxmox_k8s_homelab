@@ -1,12 +1,18 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: devlab
+  name: dev
 spec:
   selector:
-    app: devlab
+    app: dev
   ports:
     - protocol: TCP
       port: 22
       targetPort: 22
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
   type: LoadBalancer
