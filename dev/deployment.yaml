@@ -6,11 +6,13 @@ metadata:
     app: devlab
 spec:
   containers:
-  - image: ghcr.io/robertorojas/proxmox_k8s_homelab/k8slab-dev:latest
+  - image: ghcr.io/robertorojas/proxmox_k8s_homelab/k8slab-dev:20240621
     imagePullPolicy: IfNotPresent
     name: devlab
     ports:
     - containerPort: 22
+    - containerPort: 80
+    - containerPort: 8080
     volumeMounts:
     - name: authorizedkeys-volume
       mountPath: /root/.ssh/authorized_keys
