@@ -12,11 +12,28 @@ spec:
     ports:
     - containerPort: 22
     volumeMounts:
-    - name: authorizedkeys
+    - name: authorizedkeys-volume
       mountPath: /root/.ssh/authorized_keys
       subPath: authorized_keys
+      readOnly: true
+    - name: sshkey-volume
+      mountPath: /root/.ssh/id_rsa
+      subPath: id_rsa
+      readOnly: true
+    - name: sshkey-pub-volume
+      mountPath: /root/.ssh/id_rsa.pub
+      subPath: id_rsa.pub
+      readOnly: true
   restartPolicy: Always
   volumes:
-  - name: authorizedkeys
+  - name: authorizedkeys-volume
     configMap:
       name: authorizedkeys
+  - name: sshkey-volume
+    secret:
+      secretName: sshkey
+      defaultMode: 256
+  - name: sshkey-pub-volume
+    secret:
+      secretName: sshkey-pub
+      defaultMode: 256
