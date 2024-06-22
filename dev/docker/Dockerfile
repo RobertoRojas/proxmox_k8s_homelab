@@ -40,6 +40,4 @@ RUN python -m pip install PyYAML
 
 RUN python -m pip install Jinja2
 
-RUN mkdir -p ~/code
-
 CMD ["/usr/sbin/sshd", "-D"]

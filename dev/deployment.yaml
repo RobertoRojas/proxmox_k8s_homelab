@@ -26,6 +26,8 @@ spec:
       mountPath: /root/.ssh/id_rsa.pub
       subPath: id_rsa.pub
       readOnly: true
+    - name: code-volume
+      mountPath: "/root/code"
   restartPolicy: Always
   volumes:
   - name: authorizedkeys-volume
@@ -39,3 +41,6 @@ spec:
     secret:
       secretName: sshkey-pub
       defaultMode: 256
+  - name: code-volume
+    persistentVolumeClaim:
+      claimName: code-claim
