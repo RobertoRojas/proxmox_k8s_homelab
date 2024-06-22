@@ -38,7 +38,7 @@ RUN mv bazel-archive-keyring.gpg /usr/share/keyrings
 
 RUN echo "deb [signed-by=/usr/share/keyrings/bazel-archive-keyring.gpg] http://storage.googleapis.com/bazel-apt stable jdk1.8" | tee /etc/apt/sources.list.d/bazel.list
 
-RUN apt-get install -y bazel
+RUN apt install -y bazel
 
 RUN curl -fsSL https://code-server.dev/install.sh | sh
 
