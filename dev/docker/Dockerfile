@@ -30,21 +30,15 @@ RUN apt-get install -y python3-pip
 
 RUN ln -s /usr/bin/python3 /usr/bin/python
 
-RUN echo '[global]\nbreak-system-packages = true' > /etc/pip.conf
-
-RUN apt install apt-transport-https curl gnupg -y
+RUN echo "[global]\nbreak-system-packages = true" > /etc/pip.conf
 
 RUN curl -fsSL https://bazel.build/bazel-release.pub.gpg | gpg --dearmor >bazel-archive-keyring.gpg
 
 RUN mv bazel-archive-keyring.gpg /usr/share/keyrings
 
-RUN echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/bazel-archive-keyring.gpg] https://storage.googleapis.com/bazel-apt stable jdk1.8' | sudo tee /etc/apt/sources.list.d/bazel.list
+RUN echo "deb [signed-by=/usr/share/keyrings/bazel-archive-keyring.gpg] http://storage.googleapis.com/bazel-apt stable jdk1.8" | tee /etc/apt/sources.list.d/bazel.list
 
-RUN apt install bazel
-
-RUN curl -o /usr/bin/buildifier https://github.com/bazelbuild/buildtools/releases/download/v7.1.2/buildifier-linux-amd64
-
-RUN chmod +x /usr/bin/buildifier
+RUN apt-get install -y bazel
 
 RUN curl -fsSL https://code-server.dev/install.sh | sh
 
