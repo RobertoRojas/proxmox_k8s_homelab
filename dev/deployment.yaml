@@ -6,9 +6,22 @@ metadata:
     app: dev
 spec:
   containers:
-  - image: ghcr.io/robertorojas/proxmox_k8s_homelab/k8slab-dev:20240621
+  - image: ghcr.io/robertorojas/proxmox_k8s_homelab/k8slab-dev:20240622
     imagePullPolicy: IfNotPresent
     name: dev
+    env:
+    - name: GIT_USER_NAME
+      valueFrom:
+        secretKeyRef:
+          name: git-config-secret
+          key: NAME
+    - name: GIT_USER_EMAIL
+      valueFrom:
+        secretKeyRef:
+          name: git-config-secret
+          key: EMAIL
+    command: ["/bin/sh"]
+    args: ["-c", "git config --global user.name \"$GIT_USER_NAME\" && git config --global user.email \"$GIT_USER_EMAIL\" && /usr/sbin/sshd -D"]
     ports:
     - containerPort: 22
     - containerPort: 80
