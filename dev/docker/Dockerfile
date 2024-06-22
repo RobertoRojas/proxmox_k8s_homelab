@@ -44,8 +44,6 @@ RUN curl -fsSL https://code-server.dev/install.sh | sh
 
 RUN code-server --install-extension bazelbuild.vscode-bazel
 
-RUN code-server --install-extension vscjava.vscode-gradle
-
 RUN code-server --install-extension vscjava.vscode-java-pack
 
 RUN npm install -g nodemon
