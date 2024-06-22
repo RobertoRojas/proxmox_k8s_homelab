@@ -40,7 +40,7 @@ RUN echo "deb [signed-by=/usr/share/keyrings/bazel-archive-keyring.gpg] http://s
 
 RUN apt update && apt install -y bazel
 
-RUN curl -fsSL https://code-server.dev/install.sh | sh
+RUN curl -fsSL https://aka.ms/install-vscode-server/setup.sh | sh
 
 RUN code-server --install-extension bazelbuild.vscode-bazel
 
