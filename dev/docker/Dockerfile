@@ -42,11 +42,11 @@ RUN apt update && apt install -y bazel
 
 RUN curl -fsSL https://code-server.dev/install.sh | sh
 
-RUN RUN code-server --install-extension bazelbuild.vscode-bazel
+RUN code-server --install-extension bazelbuild.vscode-bazel
 
-RUN RUN code-server --install-extension vscjava.vscode-gradle
+RUN code-server --install-extension vscjava.vscode-gradle
 
-RUN RUN code-server --install-extension vscjava.vscode-java-pack
+RUN code-server --install-extension vscjava.vscode-java-pack
 
 RUN npm install -g nodemon
 
